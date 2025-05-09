@@ -11,7 +11,7 @@ class Queue{
     }
     
     dequeue(){
-        if(this.outStack.length==1){
+        if(this.outStack.length==0){
             while(this.inStack.length>0){
                 this.outStack.push(this.inStack.pop())
             }
