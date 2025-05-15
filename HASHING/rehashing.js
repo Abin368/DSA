@@ -2,7 +2,7 @@ class HashTable {
     constructor(size) {
       this.size = size;
       this.table = new Array(size);
-      this.count = 0; // ✅ Initialize properly
+      this.count = 0; 
     }
   
     _hash(key) {
@@ -14,7 +14,7 @@ class HashTable {
     }
   
     _rehash() {
-      let oldtable = this.table; // ✅ Declare properly
+      let oldtable = this.table; 
       this.size = this.size * 2;
       this.table = new Array(this.size);
       this.count = 0; // Reset count because we are reinserting everything

@@ -21,7 +21,7 @@ class HashTable{
         
         for(let chain of this.table[index]){
             if(chain[0]==key){
-                return pair[1]=value
+                return chain[1]=value
             }
         }
         
