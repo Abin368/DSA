@@ -60,12 +60,12 @@ class Trie {
             return false;
         };
 
-        deleteNode(this.root, word, 0); // ✅ fixed call
+        deleteNode(this.root, word, 0);
     }
 
     findNode(prefix) {
         let node = this.root;
-        for (let char of prefix) { // ✅ fixed loop
+        for (let char of prefix) { 
             if (!node[char]) return null;
             node = node[char];
         }
@@ -75,7 +75,7 @@ class Trie {
     autocomplete(prefix) {
         let node = this.findNode(prefix);
         if (!node) return [];
-        const result = []; // ✅ fixed variable name
+        const result = [];
 
         const dfs = (currentNode, path) => {
             if (currentNode.isEnd) result.push(path);

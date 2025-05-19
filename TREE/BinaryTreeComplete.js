@@ -54,7 +54,7 @@ class Tree{
          this.preorder(node.left)
          this.preorder(node.right)
     }
-    
+   //-------------------------------------- 
     //postorder
     postorder(node=this.root){
         
@@ -64,7 +64,7 @@ class Tree{
         console.log(node.data)
         
     }
-    
+    //----------------------------------
     levelorder(){
         let queue=[this.root]
         
@@ -80,7 +80,7 @@ class Tree{
         }
     }
     
-    
+   //------------------------------------------- 
     search(value){
         if(!this.root){
             return
@@ -102,7 +102,8 @@ class Tree{
         
         return false
     }
-    
+
+    //--------------------------------------
     
     delete(value){
         if(!this.root){
@@ -145,7 +146,7 @@ class Tree{
             parentoflastnode.right=null
         }
     }
-    
+ //------------------------------------------   
     height(node=this.root){
         if(!node){
             return 0
@@ -153,7 +154,7 @@ class Tree{
         
        return 1+Math.max(this.height(node.left),this.height(node.right))
     }
-    
+//--------------------------------------------    
     countNode(node=this.root){
         if(!node){
             return 0
@@ -161,7 +162,7 @@ class Tree{
         
         return 1+(this.countNode(node.left)+this.countNode(node.right))
     }
-    
+ //---------------------------------------------   
     countLeaf(node=this.root){
         if(!node){
             return 0
@@ -172,7 +173,7 @@ class Tree{
         
         return this.countLeaf(node.left)+this.countLeaf(node.right)
     }
-    
+ //-----------------------------------------   
    isBalanced(node = this.root) {
         if (!node) return true;
         const lh = this.height(node.left);
@@ -183,7 +184,7 @@ class Tree{
         return this.isBalanced(node.left) && this.isBalanced(node.right);
     }
 }
-
+//---------------------------------------------
 const tree=new Tree()
 tree.insert(10)
 tree.insert(20)
