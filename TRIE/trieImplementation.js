@@ -25,7 +25,7 @@ class Trie {
         }
         return node.isEnd === true;
     }
-
+//------------------------------------------
     startsWith(word) {
         let node = this.root;
         for (let char of word) {
@@ -36,7 +36,7 @@ class Trie {
         }
         return true;
     }
-
+//-------------------------------------
     delete(word) {
         const deleteNode = (node, word, index) => {
             if (index === word.length) {
@@ -62,7 +62,7 @@ class Trie {
 
         deleteNode(this.root, word, 0);
     }
-
+//---------------------------------
     findNode(prefix) {
         let node = this.root;
         for (let char of prefix) { 
@@ -71,7 +71,7 @@ class Trie {
         }
         return node;
     }
-
+//-----------------------------------
     autocomplete(prefix) {
         let node = this.findNode(prefix);
         if (!node) return [];
@@ -89,7 +89,7 @@ class Trie {
         dfs(node, prefix);
         return result;
     }
-
+//----------------------------------
     allWords() {
         const result = [];
 

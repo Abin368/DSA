@@ -163,6 +163,22 @@ class Tree{
 
         return this.isBalanced(node.left) && this.isBalanced(node.right);
         }
+
+        //-----------------------------
+        printLeave(node=this.root){
+            if(!node){
+                return
+            }
+            
+            if(!node.left && !node.right){
+                console.log(node.data)
+                return
+                
+            }
+            
+            this.printLeave(node.left)
+             this.printLeave(node.right)
+        }
     
 }
 
@@ -191,3 +207,5 @@ console.log(tree.findHeight())
 console.log(tree.findNode())
 console.log(tree.findLeave())
 console.log(tree.isBalanced())
+console.log('print leave')
+tree.printLeave()
