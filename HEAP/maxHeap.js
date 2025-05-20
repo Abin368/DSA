@@ -85,6 +85,8 @@ class MaxHeap {
     print() {
         console.log(this.heap);
     }
+
+    
 }
 const maxHeap = new MaxHeap();
 let arr = [5, 2, 3, 1, 6, 7];
