@@ -179,6 +179,20 @@ class Tree{
             this.printLeave(node.left)
              this.printLeave(node.right)
         }
+
+        //---------------------------
+
+        singleChild(node=this.root){
+            if(!node){
+                return 0
+            }
+            let count=0
+            if((node.left && !node.right )||(!node.left && node.right )){
+                count=1
+            }
+
+            return count+this.singleChild(node.left)+this.singleChild(node.right)
+        }
     
 }
 
@@ -209,3 +223,5 @@ console.log(tree.findLeave())
 console.log(tree.isBalanced())
 console.log('print leave')
 tree.printLeave()
+console.log('single child nodes')
+console.log(tree.singleChild())

@@ -26,6 +26,7 @@ class Trie {
         return node.isEnd === true;
     }
 //------------------------------------------
+//prefix search
     startsWith(word) {
         let node = this.root;
         for (let char of word) {
@@ -105,15 +106,36 @@ class Trie {
         dfs(this.root, "");
         return result;
     }
+
+    //---------------------------------
+    longestCommonPrefix() {
+        let node = this.root;
+        let prefix = "";
+    
+        while (true) {
+            const keys = Object.keys(node).filter(key => key !== 'isEnd');
+    
+            if (keys.length !== 1 || node.isEnd) {
+                break;
+            }
+    
+            const char = keys[0];
+            prefix += char;
+            node = node[char];
+        }
+    
+        return prefix;
+    }
+    
 }
 let trie = new Trie();
-trie.insert('abin');
+trie.insert('main');
 trie.insert('mathew');
 trie.insert('math');
 trie.insert('mathe');
 trie.insert('mat');
-trie.insert('sheeba');
-
+trie.insert('maba');
+console.log(trie.longestCommonPrefix())
 console.log(trie.allWords());           // ['abin', 'mat', 'mathe', 'mathew', 'math', 'sheeba']
 console.log(trie.autocomplete("mat"));  // ['mat', 'mathe', 'mathew', 'math']
 
