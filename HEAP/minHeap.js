@@ -84,6 +84,34 @@ class Heap{
     print(){
         console.log(this.heap)
     }
+
+
+    findKthSmallest(k) {
+        let temp = [...this.heap]; // ✅ Fix added
+        let result = null;
+
+        for (let i = 0; i < k; i++) {
+            result = this.remove();
+        }
+
+        this.heap = temp;
+        return result;
+    }
+
+    findKthLargest(k) {
+        let temp = [...this.heap];
+        let result = null;
+
+        this.heap = this.heap.map(num => -num);
+        this.buildHeap(this.heap);
+
+        for (let i = 0; i < k; i++) {
+            result = -this.remove();
+        }
+
+        this.heap = temp;
+        return result;
+    }
 }
 
 const heap=new Heap()
@@ -93,5 +121,7 @@ heap.minHeap(arr)
 heap.print()
 console.log(heap.peek())
 console.log(heap.remove())
+console.log(heap.findKthLargest(3))
+console.log(heap.findKthSmallest(3))
 heap.insert(0)
 heap.print()

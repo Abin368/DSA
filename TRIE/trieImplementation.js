@@ -138,4 +138,4 @@ trie.insert('maba');
 console.log(trie.longestCommonPrefix())
 console.log(trie.allWords());           // ['abin', 'mat', 'mathe', 'mathew', 'math', 'sheeba']
 console.log(trie.autocomplete("mat"));  // ['mat', 'mathe', 'mathew', 'math']
-
+console.log(trie.findNode("mat"));
