@@ -91,6 +91,70 @@ dfsIterative(start){
     return result
 }
 
+
+//-------------------------
+hasCycle() {
+    const visited = {};
+
+    const dfs = (vertex, parent) => {
+        visited[vertex] = true;
+
+        for (let neighbour of this.adjacentList[vertex]) {
+            if (!visited[neighbour]) {
+                if (dfs(neighbour, vertex)) return true;
+            } else if (neighbour !== parent) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    for (let vertex in this.adjacentList) {
+        if (!visited[vertex]) {
+            if (dfs(vertex, null)) return true;
+        }
+    }
+    return false;
+}
+
+//------------------------
+countCycles() {
+    const visited = {};
+    const cycles = new Set();
+
+    const dfs = (vertex, parent, path) => {
+        visited[vertex] = true;
+        path.push(vertex);
+
+        for (let neighbour of this.adjacentList[vertex]) {
+            if (!visited[neighbour]) {
+                dfs(neighbour, vertex, path);
+            } else if (neighbour !== parent) {
+                // Found a cycle
+                let cyclePath = [...path];
+                let cycleStartIndex = cyclePath.indexOf(neighbour);
+                if (cycleStartIndex !== -1) {
+                    let cycle = cyclePath.slice(cycleStartIndex);
+                    cycle.sort(); // sort to avoid duplicates
+                    cycles.add(cycle.join('-')); 
+                }
+            }
+        }
+        path.pop();
+    };
+
+    for (let vertex in this.adjacentList) {
+        if (!visited[vertex]) {
+            dfs(vertex, null, []);
+        }
+    }
+
+    return cycles.size;
+}
+
+
+
+
 }
 
 
@@ -110,3 +174,5 @@ g1.display()
 console.log(g1.bfs('A'))
 console.log(g1.dfsRecursive('A'))
 console.log(g1.dfsIterative('A'))
+console.log(g1.hasCycle())
+console.log(g1.countCycles())
