@@ -35,7 +35,7 @@ class BST{
             }
         }
     }
-    
+  //------------------------------------  
     largest(k){
         let count=0
         let result=null
@@ -67,4 +67,4 @@ bst.insert(5)
 bst.insert(7)
 bst.insert(8)
 
-console.log(bst.largest(6))
+console.log(bst.largest(2))

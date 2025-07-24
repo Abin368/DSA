@@ -183,6 +183,54 @@ class Tree{
 
         return this.isBalanced(node.left) && this.isBalanced(node.right);
     }
+ //-------------------------------------------
+ 
+ degree(data,node=this.root){
+      if(!node)return 0
+      
+     if(node.data==data){
+         
+         let count=0
+         
+         if(node.left)count++
+         if(node.right)count++
+         return count
+     }
+      
+      return this.degree(data,node.left)||this.degree(data,node.right)
+  }
+
+  //-------------------------------------
+  largestK(k, node = this.root) {
+    let values = [];
+
+    function traverse(node) {
+        if (!node) return;
+        traverse(node.left);
+        values.push(node.data);
+        traverse(node.right);
+    }
+
+    traverse(node);
+    values.sort((a, b) => b - a); // Sort descending
+    return values[k - 1] || null;
+}
+
+
+//---------------------------------
+
+depth(data, node = this.root, level = 0) {
+    if (!node) return -1;   // Not found
+    if (node.data === data) return level;
+
+    let left = this.depth(data, node.left, level + 1);
+    if (left !== -1) return left;
+
+    return this.depth(data, node.right, level + 1);
+}
+
+
+
 }
 //---------------------------------------------
 const tree=new Tree()
@@ -210,3 +258,8 @@ console.log(tree.countNode())
 console.log('-------------------')
 console.log(tree.countLeaf())
 console.log("Is Balanced:", tree.isBalanced());
+console.log(tree.degree(10))
+
+console.log(tree.largestK(4))
+
+console.log(tree.depth(30))

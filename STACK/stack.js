@@ -34,16 +34,33 @@ class Stack {
         }
         console.log(this.items);
     }
+
+    //-------------------------
+    sort(){
+        let temp=[]
+        
+        while(this.items.length>0){
+            
+            let top=this.items.pop()
+            
+            while(temp.length>0 && temp[temp.length-1]<top){
+                this.items.push(temp.pop())
+            }
+            
+            temp.push(top)
+        }
+        
+        return temp
+    }
 }
 
 // Example usage:
-const stack = new Stack(3); // Fixed
+const stack = new Stack(10); // Fixed
 
 stack.push(10);
 stack.push(20);
 stack.push(30);
-stack.push(40); // Will trigger overflow
-stack.display(); // 10 -> 20 -> 30
-stack.pop();
-stack.display(); // 10 -> 20
-console.log(stack.peek()); // 20
+stack.push(40);
+
+console.log(stack.sort())
+
